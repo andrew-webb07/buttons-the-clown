@@ -1,3 +1,4 @@
+import { PartyForm } from "./PartyForm.js"
 
 
 export const ButtonsTheClown = () => {
@@ -5,7 +6,7 @@ export const ButtonsTheClown = () => {
         <h1>Buttons and Lollipop the Clowns</h1>
 
         <section class="partyForm">
-        
+        ${PartyForm()}
         </section>
 
         <section class="partyRequests">
