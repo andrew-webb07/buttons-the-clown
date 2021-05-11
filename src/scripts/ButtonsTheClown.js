@@ -9,6 +9,7 @@ export const ButtonsTheClown = () => {
         </section>
 
         <section class="partyRequests">
+        <h2>Party Requests</h2>
         
         </section>
 
