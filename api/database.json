@@ -31,5 +31,13 @@
       "id": 2,
       "name": "Lollipop"
     }
+  ],
+  "completions": [
+    {
+      "requestId": "4",
+      "clownId": "1",
+      "date": "5/12/2021",
+      "id": 1
+    }
   ]
 }
