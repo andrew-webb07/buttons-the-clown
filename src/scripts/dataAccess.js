@@ -2,7 +2,9 @@ const applicationState = {
     parents: [],
     children: [],
     partyRequests: [],
-    chronologicalPartyOrder: []
+    chronologicalPartyOrder: [],
+    clowns: [],
+    completions: []
 }
 
 const API = "http://localhost:8088"
@@ -17,6 +19,20 @@ export const fetchRequests = () => {
                 applicationState.partyRequests = requests
             }
         )
+}
+
+export const fetchClowns = () => {
+    return fetch(`${API}/clowns`)
+    .then(response => response.json())
+    .then(
+        (clowns) => {
+            applicationState.clowns = clowns
+        }
+    )
+}
+
+export const getClowns = () => {
+    return [...applicationState.clowns]
 }
 
 export const getRequests = () => {
@@ -46,4 +62,26 @@ export const deleteRequest = (id) => {
             mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
         }
     )
+}
+
+export const sendCompletion = (completedPerformance) => {
+    return fetch(`${API}/completions`, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(completedPerformance)
+    })
+    .then(response => response.json())
+    .then(() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const fetchCompletions = () => {
+    return fetch(`${API}/completions`)
+        .then(response => response.json())
+        .then((completedParties) => {
+            applicationState.completions = completedParties
+        })
 }
