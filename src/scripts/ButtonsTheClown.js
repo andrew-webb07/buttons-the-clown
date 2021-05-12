@@ -1,4 +1,5 @@
 import { PartyForm } from "./PartyForm.js"
+import {Requests} from "./PartyRequests.js"
 
 
 export const ButtonsTheClown = () => {
@@ -11,7 +12,7 @@ export const ButtonsTheClown = () => {
 
         <section class="partyRequests">
         <h2>Party Requests</h2>
-        
+        ${Requests()}
         </section>
 
     `

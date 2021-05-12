@@ -1,29 +1,37 @@
-import { sendRequest } from "./dataAccess.js"
+import { sendRequest } from "./dataAccess.js";
 
-const mainContainer = document.querySelector("#container")
+const mainContainer = document.querySelector("#container");
 
-mainContainer.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id === "submitRequest") {
-        const userParentName = document.querySelector("input[name=partyParentName]").value
-        const userChildName = document.querySelector("input[name=partyChildName]").value
-        const userNumberOfChildren = document.querySelector("input[name=partyNumberOfChildren]").value
-        const userAddress = document.querySelector("input[name=partyAddress]").value
-        const userDate = document.querySelector("input[name=partyDate]").value
+mainContainer.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.id === "submitRequest") {
+    const userDescription = document.querySelector("input[name=partyDescription").value;
+    const userParentName = document.querySelector("input[name=partyParentName]").value;
+    const userChildName = document.querySelector("input[name=partyChildName]").value;
+    const userNumberOfChildren = document.querySelector("input[name=partyNumberOfChildren]").value;
+    const userAddress = document.querySelector("input[name=partyAddress]").value;
+    const userDate = document.querySelector("input[name=partyDate]").value;
 
-        const dataToSendToAPI = {
-                parentName: userParentName,
-                childName: userChildName,
-                numberOfChildren: userNumberOfChildren,
-                address: userAddress,
-                date: userDate
-        }
+    const dataToSendToAPI = {
+      description: userDescription,
+      parentName: userParentName,
+      childName: userChildName,
+      numberOfChildren: userNumberOfChildren,
+      address: userAddress,
+      date: userDate,
+    };
 
-        sendRequest(dataToSendToAPI)
-    }
-})
+    sendRequest(dataToSendToAPI);
+  }
+});
 
 export const PartyForm = () => {
-    return `
+  return `
+        <div class="field">
+            <label class="label"
+            for="partyDescription">Party Description</label>
+            <input type="text" name="partyDescription" class="input" />
+        </div>
+
         <div class="field">
             <label class="label"
             for="partyParentName">Parent Name</label>
@@ -55,5 +63,5 @@ export const PartyForm = () => {
         </div>
         
         <button class="button" id="submitRequest">Submit Request</button>
-    `
-}
+    `;
+};
